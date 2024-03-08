@@ -157,7 +157,7 @@
 
 @include('user.booking')
 
-   <!-- .banner-home -->
+   <!-- .banner-home -->   
 
   <footer class="page-footer">
     <div class="container">
