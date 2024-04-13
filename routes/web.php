@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +19,16 @@ use App\Http\Controllers\HomeController;
 
 
 
-Route::get('/',[HomeController::class,'INDEX']);
+Route::get('/',[HomeController::class,'index']);
 
 Route::get('/home',[HomeController::class,'redirect']);
+
+Route::get('/add_hall_view',[AdminController::class,'addview']);
+
+Route::post('/upload_hall',[AdminController::class,'upload']);
+
+Route::post('/booking',[HomeController::class,'booking']);
+
 
 Route::middleware([
     'auth:sanctum',
@@ -30,3 +39,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+

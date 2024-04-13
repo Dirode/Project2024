@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 
+use App\Models\Hall;
+
+use App\Models\Booking;
+
 class HomeController extends Controller
 {
     public function redirect()
@@ -16,7 +20,9 @@ class HomeController extends Controller
         {
             if(Auth::user()->usertype=='0')
             {
-                return view('user.home');
+                $hall=hall::all();
+
+                return view('user.home', compact('hall'));
             }
             else
             {
@@ -31,6 +37,23 @@ class HomeController extends Controller
     }
     public function index()
     {
-       return view('user.home') ;
+        if(Auth::id())
+        {
+            return redirect('home');
+        }
+
+        else
+        {
+        $hall = hall::all();
+
+       return view('welcome', compact('hall'));
+        }
     }
-}
+
+  
+
+       
+   
+
+} 
+

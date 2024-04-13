@@ -36,7 +36,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupport">
+        <div class=" " id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Home</a>
@@ -50,30 +50,14 @@
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
-
-            @if(Route::has('login'))
-
-            @auth
-
+            <li class="nav-item">
             <x-app-layout>
     
             </x-app-layout>
-
-
-            @else
-
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="{{route('login')}}">Login</a>
             </li>
 
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
-            </li>
 
-            @endauth
-
-            @endif
-
+           
 
           </ul>
         </div> <!-- .navbar-collapse -->
@@ -86,7 +70,7 @@
       <div class="container text-center wow zoomIn">
         <span class="subhead">Let's make a booking easier</span>
         <h1 class="display-4">Hall Booking</h1>
-        <a href="#" class="btn btn-primary">Book now</a>
+        
       </div>
     </div>
   </div>
