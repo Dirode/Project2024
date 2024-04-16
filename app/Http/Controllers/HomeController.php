@@ -50,10 +50,67 @@ class HomeController extends Controller
         }
     }
 
+    public function booking(Request $request)
+    {
+
+         // Retrieve start and end time from the request
+    $startTime = $request->start_time;
+    $endTime = $request->end_time;
+    $hallId = $request->hall;
+
+    // Check for overlapping bookings
+    $overlappingBookings = Booking::where('hall', $hallId)
+        ->where(function ($query) use ($startTime, $endTime) {
+            $query->whereBetween('start_time', [$startTime, $endTime])
+                ->orWhereBetween('end_time', [$startTime, $endTime])
+                ->orWhere(function ($query) use ($startTime, $endTime) {
+                    $query->where('start_time', '<=', $startTime)
+                        ->where('end_time', '>=', $endTime);
+                });
+        })
+        ->exists();
+
+    // If there are overlapping bookings, deny the request
+    if ($overlappingBookings) {
+        $status = 'Rejected';
+    } else {
+        $status = 'Booked';
+    }
+
+        $data = new booking;
+
+        $data->name=$request->name;
+
+        $data->email=$request->email;
+
+        $data->date=$request->date;
+
+        $data->hall=$request->hall;
+
+        $data->start_time=$request->start_time;
+
+        $data->end_time=$request->end_time;
+
+        $data->reason=$request->reason;
+
+        $data->status = $status; // Set status based on availability
+
+        if(Auth::id())
+        {
+            $data->user_id=Auth::user()->id;
+        }
+
+       $data->save();
+
+       // Redirect back with appropriate message
+    if ($status === 'Booked')
+    {
+        return redirect()->back()->with('message', 'Booking Request Successful.');
+    } 
+    else 
+    {
+        return redirect()->back()->with('message', 'The hall is already booked for this time slot.');
+    }
   
-
-       
-   
-
 } 
-
+}

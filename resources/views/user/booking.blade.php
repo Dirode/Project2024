@@ -29,16 +29,16 @@
 
             </select>
           </div>
-          <div  class="col-12 py-2 wow fadeInLeft" data-wow-delay="300ms">
-          <div class="form-inline">
+          
+        <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <label for="start_time" class="mr-2">Start Time</label>
             <input type="time" id="start_time" name="start_time" class="form-control mr-2">
-        
-            <label for="end_time" class="mr-2">End Time</label>
+        </div>
+        <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+          <label for="end_time" class="mr-2">End Time</label>
             <input type="time" id="end_time" name="end_time" class="form-control">
-          </div>
-          </div>
-          
+        </div>
+           
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <input type="text" name="reason" class="form-control" placeholder="Reason for booking..">
           </div>
