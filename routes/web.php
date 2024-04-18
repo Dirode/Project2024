@@ -29,6 +29,18 @@ Route::post('/upload_hall',[AdminController::class,'upload']);
 
 Route::post('/booking',[HomeController::class,'booking']);
 
+Route::get('/mybooking',[HomeController::class,'mybooking']);
+
+Route::get('/cancel_book/{id}',[HomeController::class,'cancel_book']);
+
+Route::get('/showhall',[AdminController::class,'showhall']);
+
+Route::get('/deletehall/{id}',[AdminController::class,'deletehall']);
+
+Route::get('/updatehall/{id}',[AdminController::class,'updatehall']);
+
+Route::post('/edithall/{id}',[AdminController::class,'edithall']);
+
 
 Route::middleware([
     'auth:sanctum',

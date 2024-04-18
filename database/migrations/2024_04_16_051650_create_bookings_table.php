@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('end_time')->nullable();
             $table->string('reason')->nullable();
             $table->string('status')->nullable();
-            $table->string('user_id')->nullable();
+              
             $table->timestamps();
         });
     }

@@ -98,9 +98,9 @@
           <div class="col-md-4 py-3 py-md-0">
             <div class="card-service wow fadeInUp">
               <div class="circle-shape bg-secondary text-white">
-                <span class="mai-chatbubbles-outline"></span>
+                <span class="mai-chatbubbles-outline">J</span>
               </div>
-              <p> Services</p>
+              <p> J </p>
             </div>
           </div>
           <div class="col-md-4 py-3 py-md-0">
@@ -142,7 +142,7 @@
 @include('user.hall')
  <!-- .page-section -->
 
-@include('user.booking')
+
 
    <!-- .banner-home -->   
 

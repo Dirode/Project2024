@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 use App\Models\Hall;
-
+           
 use App\Models\Booking;
 
 class HomeController extends Controller
@@ -54,28 +54,35 @@ class HomeController extends Controller
     {
 
          // Retrieve start and end time from the request
-    $startTime = $request->start_time;
-    $endTime = $request->end_time;
-    $hallId = $request->hall;
+   // Retrieve start and end time from the request
+$startTime = $request->start_time;
+$endTime = $request->end_time;
+$hallId = $request->hall;
+$date = $request->date;
 
-    // Check for overlapping bookings
-    $overlappingBookings = Booking::where('hall', $hallId)
-        ->where(function ($query) use ($startTime, $endTime) {
-            $query->whereBetween('start_time', [$startTime, $endTime])
-                ->orWhereBetween('end_time', [$startTime, $endTime])
-                ->orWhere(function ($query) use ($startTime, $endTime) {
-                    $query->where('start_time', '<=', $startTime)
-                        ->where('end_time', '>=', $endTime);
-                });
-        })
-        ->exists();
+// Convert start and end time to 24-hour format
+$startTime24 = date('H:i:s', strtotime($startTime));
+$endTime24 = date('H:i:s', strtotime($endTime));
 
-    // If there are overlapping bookings, deny the request
-    if ($overlappingBookings) {
-        $status = 'Rejected';
-    } else {
-        $status = 'Booked';
-    }
+// Check for overlapping bookings
+$overlappingBookings = Booking::where('hall', $hallId)
+->whereDate('date', $date)
+->where(function ($query) use ($startTime24, $endTime24) {
+    $query->whereBetween('start_time', [$startTime24, $endTime24])
+        ->orWhereBetween('end_time', [$startTime24, $endTime24])
+        ->orWhere(function ($query) use ($startTime24, $endTime24) {
+            $query->where('start_time', '<=', $startTime24)
+                ->where('end_time', '>=', $endTime24);
+        });
+})
+->exists();
+
+// If there are overlapping bookings, deny the request
+if ($overlappingBookings) {
+ return redirect()->back()->with('message', 'The hall is already booked for this time slot.');
+} else {
+$status = 'Booked';
+}
 
         $data = new booking;
 
@@ -107,10 +114,31 @@ class HomeController extends Controller
     {
         return redirect()->back()->with('message', 'Booking Request Successful.');
     } 
-    else 
-    {
-        return redirect()->back()->with('message', 'The hall is already booked for this time slot.');
-    }
   
 } 
+
+    public function mybooking()
+    {
+        if(Auth::id())
+        {
+            $userid=Auth::user()->id;
+
+            $book=booking::where('user_id',$userid)->get();
+
+            return view('user.my_booking', compact('book'));
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+
+    public function cancel_book($id)
+    {
+        $data=booking::find($id);
+
+        $data->delete();
+
+        return redirect()->back();
+    }
 }

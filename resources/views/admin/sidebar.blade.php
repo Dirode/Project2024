@@ -65,6 +65,16 @@
               <span class="menu-title">Add Halls</span>
             </a>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('showhall')}} ">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">All Halls</span>
+            </a>
+          </li>
+
         </ul>
       </nav>
       

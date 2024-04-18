@@ -69,71 +69,44 @@
     </nav>
   </header>
 
-  @if(session()->has('message'))
+  <div align="center" style="padding:70px;">
 
-  <div class="alert alert-success">
+  <table>
 
-  <button type="button" class="close" data-dismiss="alert">
-    x
-  </button>
+    <tr style="background-color:black;" align="center">
+        <th style="padding:10px; font-size: 20px; color:white;">Hall Name</th>
+        <th style="padding:10px; font-size: 20px; color:white;">Date</th>
+        <th style="padding:10px; font-size: 20px; color:white;">Start_Time</th>
+        <th style="padding:10px; font-size: 20px; color:white;">End_Time</th>
+        <th style="padding:10px; font-size: 20px; color:white;">Reason</th>
+        <th style="padding:10px; font-size: 20px; color:white;">Status</th>
+        <th style="padding:10px; font-size: 20px; color:white;">Cancel Booking</th>
+    </tr>
 
-    {{session()->get('message')}}
+    @foreach($book as $books)
 
-  </div>
+    <tr style="background-color: grey;  border: 1px solid black;">
+
+        <td style="padding:10px;  color:white;">{{$books->hall}}</td>
+        <td style="padding:10px;  color:white;">{{$books->date}}</td>
+        <td style="padding:10px;  color:white;">{{$books->start_time}}</td>
+        <td style="padding:10px;  color:white;">{{$books->end_time}}</td>
+        <td style="padding:10px;  color:white;">{{$books->reason}}</td>
+        <td style="padding:10px;  color:white;">{{$books->status}}</td>
+
+      @if($books->status == 'Booked')
+        <td><a class="btn btn-danger" onclick="return confirm('Are you sure to delete this?')"
+        href="{{url('cancel_book', $books->id)}}">Cancel</a></td>
+    </tr>
 
     @endif
 
+    @endforeach
 
-  <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/college.jpg);">
-    <div class="hero-section">
-      <div class="container text-center wow zoomIn">
-        <span class="subhead">Let's make a booking easier</span>
-        <h1 class="display-4">Hall Booking</h1>
-        
-      </div>
-    </div>
+  </table>
   </div>
 
 
- <!-- .page-section -->
-
-    <div class="page-section pb-0">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>Welcome to Hall Booking</h1>
-            <p class="text-grey mb-4"> Implementing an online booking platform allows us to check hall availability, select their desired date and time, and make reservations conveniently from anywhere. </p>
-          </div>
-          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-            <div class="img-place custom-img-1">
-              <img src="../assets/img/JNEC_1.jpeg" alt="jnec">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .bg-light -->
-  </div> <!-- .bg-light -->
-@include('user.hall')
- <!-- .page-section -->
-
-@include('user.booking')
-
-   <!-- .banner-home -->   
-
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row px-md-3">
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>Jigme Namgyel Engineering College, Dewathang</h5>
-        </div>
-
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>IT Building</h5>
-          <h5>+975-17753587
-        </div>
-      </div>
-    </div>
-  </footer>
 
 <script src="../assets/js/jquery-3.5.1.min.js"></script>
 
