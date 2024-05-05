@@ -55,6 +55,21 @@
             </div>
 
             <div style="padding:15px;">
+            <label>Capacity</label>
+            <input type="text" style="color:black;" name="capacity" placeholder="Write hall name">
+        </div>
+
+        <div style="padding:15px;">
+            <label>Location</label>
+            <input type="text" style="color:black;" name="location" placeholder="Write hall name">
+        </div>
+
+        <div style="padding:15px;">
+            <label>Description</label>
+            <input type="text" style="color:black;" name="description" placeholder="Write hall name">
+        </div>
+
+            <div style="padding:15px;">
 
                 <label>Old Image</label>
                 <img height="150" width="150" src="hallimage/{{$data->image}}">

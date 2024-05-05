@@ -4,13 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Hall;
+
+use App\Models\Booking;
+
+use Charts;
+
 
 class AdminController extends Controller
 {
    public function addview()
    {
-    return view('admin.add_hall');
+      if(Auth::id())
+      {
+         if(Auth::user()->usertype==1)
+
+         {
+            return view('admin.add_hall');
+         }
+         else
+         {
+            return redirect()->back();
+         }
+      }
+      else
+      {
+         return redirect('login');
+      }
+   
    }
 
    public function upload(Request $request)
@@ -27,6 +50,12 @@ class AdminController extends Controller
 
         $hall->name=$request->name;
 
+        $hall->capacity=$request->capacity;
+
+        $hall->location=$request->location;
+
+        $hall->description=$request->description;
+
         $hall->save();
 
         return redirect()->back()->with('message', 'Hall Added Successfully');
@@ -35,10 +64,23 @@ class AdminController extends Controller
 
    public function showhall()
    {
+      if(Auth::id())
+      {
+         if(Auth::user()->usertype==1)
+         {
+            $data = hall::all();
 
-      $data = hall::all();
-
-      return view('admin.showhall', compact('data'));
+            return view('admin.showhall', compact('data'));
+         }
+         else
+         {
+            return redirect()->back();
+         }
+      }
+      else
+      {
+         return redirect('login');
+      }
    }
 
    public function deletehall($id)
@@ -63,6 +105,12 @@ class AdminController extends Controller
 
       $hall->name=$request->name;
 
+      $hall->capacity=$request->capacity;
+
+      $hall->location=$request->location;
+
+      $hall->description=$request->description;
+
       $image=$request->file;
 
       if($image)
@@ -81,4 +129,13 @@ class AdminController extends Controller
       return redirect()->back()->with('message', 'Hall Updated Successfully');
 
    }
+
+   public function bookingshow()
+   {
+      $data=booking::all();
+      
+      return view('admin.bookingshow', compact('data'));
+   }
+
+  
 }

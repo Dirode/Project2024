@@ -12,6 +12,10 @@ use App\Models\Hall;
            
 use App\Models\Booking;
 
+use App\Mail\BookingConfirmation;
+
+use Illuminate\Support\Facades\Mail;
+
 class HomeController extends Controller
 {
     public function redirect()
@@ -52,7 +56,6 @@ class HomeController extends Controller
 
     public function booking(Request $request)
     {
-
          // Retrieve start and end time from the request
    // Retrieve start and end time from the request
 $startTime = $request->start_time;
@@ -60,6 +63,8 @@ $endTime = $request->end_time;
 $hallId = $request->hall;
 $date = $request->date;
 
+
+ 
 // Convert start and end time to 24-hour format
 $startTime24 = date('H:i:s', strtotime($startTime));
 $endTime24 = date('H:i:s', strtotime($endTime));
@@ -121,15 +126,27 @@ $status = 'Booked';
     {
         if(Auth::id())
         {
-            $userid=Auth::user()->id;
+            if(Auth::user()->usertype==0)
 
-            $book=booking::where('user_id',$userid)->get();
+            {
+                $userid=Auth::user()->id;
 
-            return view('user.my_booking', compact('book'));
+                $book=booking::where('user_id',$userid)
+                                ->orderBy('date', 'asc')
+                                ->orderBy('start_time', 'asc')
+                                ->orderBy('end_time', 'asc')
+                                ->get();
+
+                return view('user.my_booking', compact('book'));
+            }
+            else
+            {
+                return redirect()->back();
+            }
         }
         else
         {
-            return redirect()->back();
+            return redirect('login');
         }
     }
 
@@ -140,5 +157,28 @@ $status = 'Booked';
         $data->delete();
 
         return redirect()->back();
+    }
+
+    public function aboutus()
+    {
+        return view('user.aboutus');
+    }
+
+    public function hall_details($id)
+    {
+        $hall=hall::find($id);
+    
+        $bookings=Booking::find($id);
+
+        return view('user.hall_details', compact('hall', 'bookings'));
+    }
+
+    public function confirmBooking($id)
+    {
+        $booking=Booking::findOrFail($id);
+
+
+        Mail::to($booking->user->email)->send(new bookingConfirmation($booking));
+
     }
 }

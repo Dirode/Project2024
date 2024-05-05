@@ -14,7 +14,7 @@
             <input type="text" name="email" class="form-control" placeholder="Email address..">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" name="date" class="form-control">
+            <input type="date" id="date" name="date" class="form-control" min="{{ now()->format('Y-m-d') }}" required="">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
             <select name="hall" id="departement" class="custom-select">
@@ -31,16 +31,26 @@
           </div>
           
         <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <label for="start_time" class="mr-2">Start Time</label>
-            <input type="time" id="start_time" name="start_time" class="form-control mr-2">
-        </div>
-        <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-          <label for="end_time" class="mr-2">End Time</label>
-            <input type="time" id="end_time" name="end_time" class="form-control">
-        </div>
+  <label for="start_time" class="mr-2">Start Time</label>
+  <input type="time" id="start_time" name="start_time" class="form-control mr-2" required="">
+</div>
+<div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+  <label for="end_time" class="mr-2">End Time</label>
+  <input type="time" id="end_time" name="end_time" class="form-control" min="{{ old('start_time', now()->format('H:i')) }}" required="">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var startTimeInput = document.getElementById('start_time');
+      var endTimeInput = document.getElementById('end_time');
+
+      startTimeInput.addEventListener('change', function() {
+        endTimeInput.min = this.value;
+      });
+    });
+  </script>
+</div>
            
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" name="reason" class="form-control" placeholder="Reason for booking..">
+            <input type="text" name="reason" class="form-control" placeholder="Reason for booking.." required="">
           </div>
         </div>
 

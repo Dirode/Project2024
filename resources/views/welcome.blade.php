@@ -38,18 +38,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="doctors.html">Halls</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
+          
+          
 
             @if(Route::has('login'))
 
@@ -84,44 +74,33 @@
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/college.jpg);">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <span class="subhead">Let's make a booking easier</span>
+        <span class="subhead">Let's make booking easier</span>
         <h1 class="display-4">Hall Booking</h1>
       </div>
     </div>
   </div>
 
-
   <div class="bg-light">
     <div class="page-section py-3 mt-md-n5 custom-index">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-secondary text-white">
-                <span class="mai-chatbubbles-outline">J</span>
-              </div>
-              <p> J </p>
+            <div class="circle-shape bg-accent text-white">
+              <span>J</span>
             </div>
+            <div class="circle-shape bg-primary text-white">
+              <span>N</span>
           </div>
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-primary text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-              <p>Location</p>
+            <div class="circle-shape bg-secondary text-white">
+              <span>E</span>
             </div>
-          </div>
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-accent text-white">
-                <span class="mai-basket"></span>
-              </div>
-              <p><span>Status</p>
+            <div class="circle-shape bg-accent text-white">
+              <span>C</span>
             </div>
-          </div>
         </div>
       </div>
     </div> <!-- .page-section -->
+
+  
 
     <div class="page-section pb-0">
       <div class="container">

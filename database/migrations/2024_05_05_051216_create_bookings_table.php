@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('hall')->nullable();
@@ -21,7 +23,6 @@ return new class extends Migration
             $table->string('end_time')->nullable();
             $table->string('reason')->nullable();
             $table->string('status')->nullable();
-              
             $table->timestamps();
         });
     }

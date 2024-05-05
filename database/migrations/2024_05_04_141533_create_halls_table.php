@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('halls', function (Blueprint $table) {
             $table->id();
             $table->String('name')->nullable();
+            $table->String('capacity')->nullable();
+            $table->String('location')->nullable();
+            $table->String('description')->nullable();
             $table->String('image')->nullable();
             $table->timestamps();
         });

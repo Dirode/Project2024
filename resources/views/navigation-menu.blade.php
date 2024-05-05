@@ -112,7 +112,7 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                </div>
+                </div>   
             </div>
 
             <!-- Hamburger -->
