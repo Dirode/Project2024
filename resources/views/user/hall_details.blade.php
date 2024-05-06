@@ -82,13 +82,6 @@
 
 </div>
 
-<div align="center">
-  
-    
-        <p class="text-xl mb-0">Status: {{$bookings->status}} on {{$bookings->date}} from {{$bookings->start_time}} 
-          to {{$bookings->end_time}} for {{$bookings->reason}}</p><br>
-    
-</div>
    <!-- .banner-home -->   
 
 <script src="../assets/js/jquery-3.5.1.min.js"></script>

@@ -27,6 +27,7 @@
         <th style="padding:10px">End_Time</th>
         <th style="padding:10px">Reason</th>
         <th style="padding:10px">Status</th>
+        <th style="padding:10px">Send Mail</th>
     </tr>
 
    
@@ -42,7 +43,7 @@
         <td style="padding:10px;  color:white;">{{$book->end_time}}</td>
         <td style="padding:10px;  color:white;">{{$book->reason}}</td>
         <td style="padding:10px;  color:white;">{{$book->status}}</td>
-   
+        
     </tr>
 
     @endforeach

@@ -10,8 +10,6 @@ use App\Models\Hall;
 
 use App\Models\Booking;
 
-use Charts;
-
 
 class AdminController extends Controller
 {
@@ -136,6 +134,5 @@ class AdminController extends Controller
       
       return view('admin.bookingshow', compact('data'));
    }
-
   
 }

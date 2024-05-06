@@ -12,9 +12,9 @@ use App\Models\Hall;
            
 use App\Models\Booking;
 
-use App\Mail\BookingConfirmation;
-
 use Illuminate\Support\Facades\Mail;
+
+use App\Mail\BookingRequestSuccessfulMail;
 
 class HomeController extends Controller
 {
@@ -56,8 +56,7 @@ class HomeController extends Controller
 
     public function booking(Request $request)
     {
-         // Retrieve start and end time from the request
-   // Retrieve start and end time from the request
+
 $startTime = $request->start_time;
 $endTime = $request->end_time;
 $hallId = $request->hall;
@@ -65,22 +64,22 @@ $date = $request->date;
 
 
  
-// Convert start and end time to 24-hour format
-$startTime24 = date('H:i:s', strtotime($startTime));
-$endTime24 = date('H:i:s', strtotime($endTime));
+// Convert start and end time to 12-hour format with AM and PM
+$startTime12 = date('h:i A', strtotime($startTime));
+$endTime12 = date('h:i A', strtotime($endTime));
 
 // Check for overlapping bookings
 $overlappingBookings = Booking::where('hall', $hallId)
-->whereDate('date', $date)
-->where(function ($query) use ($startTime24, $endTime24) {
-    $query->whereBetween('start_time', [$startTime24, $endTime24])
-        ->orWhereBetween('end_time', [$startTime24, $endTime24])
-        ->orWhere(function ($query) use ($startTime24, $endTime24) {
-            $query->where('start_time', '<=', $startTime24)
-                ->where('end_time', '>=', $endTime24);
-        });
-})
-->exists();
+        ->whereDate('date', $date)
+        ->where(function ($query) use ($startTime12, $endTime12) {
+            $query->whereBetween('start_time', [$startTime12, $endTime12])
+                ->orWhereBetween('end_time', [$startTime12, $endTime12])
+                ->orWhere(function ($query) use ($startTime12, $endTime12) {
+                    $query->where('start_time', '<=', $startTime12)
+                        ->where('end_time', '>=', $endTime12);
+                });
+        })
+        ->exists();
 
 // If there are overlapping bookings, deny the request
 if ($overlappingBookings) {
@@ -114,9 +113,16 @@ $status = 'Booked';
 
        $data->save();
 
+       // Pass the $booking object to the BookingRequestSuccessfulMail constructor
+       $booking = Booking::latest('id')->first(); // Get the latest booking
+
        // Redirect back with appropriate message
     if ($status === 'Booked')
     {
+        $user=User::find($data->user_id);
+        // Send email to user
+        Mail::to($data->email)->send(new BookingRequestSuccessfulMail($user, $booking));
+
         return redirect()->back()->with('message', 'Booking Request Successful.');
     } 
   
@@ -173,12 +179,4 @@ $status = 'Booked';
         return view('user.hall_details', compact('hall', 'bookings'));
     }
 
-    public function confirmBooking($id)
-    {
-        $booking=Booking::findOrFail($id);
-
-
-        Mail::to($booking->user->email)->send(new bookingConfirmation($booking));
-
-    }
 }
