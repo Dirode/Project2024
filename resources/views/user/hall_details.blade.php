@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<base href="/public">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,8 +26,6 @@
 <body>
 
   <!-- Back to top button -->
-  <div class="back-to-top"></div>
-
   <header>
    
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
@@ -42,9 +42,8 @@
               <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
 
-
             <li class="nav-item">
-              <a class="nav-link" style="color: black; "href="{{url('mybooking')}}">My Booking</a>
+              <a class="nav-link" style="background-color: greenyellow; color: black; "href="{{url('mybooking')}}">My Booking</a>
             </li>
             <x-app-layout>
     
@@ -60,44 +59,63 @@
     </nav>
   </header>
 
-  <div align="center" style="padding-top:70px;">
+  <div align="center" class="owl-carousel wow fadeInUp" id="doctorSlideshow">
 
-  <table>
+    <div class="hall-slides">
+      <div>  
+        <img style="height:250px  !important" src="hallimage/{{$hall->image}}" alt="">
+      </div>
+      <div class="body">
+        <p class="text-xl mb-0">{{$hall->name}}</p>
 
-    <tr style="background-color:black;" align="center">
-        <th style="padding:10px; font-size: 20px; color:white;">Hall Name</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Date</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Start_Time</th>
-        <th style="padding:10px; font-size: 20px; color:white;">End_Time</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Reason</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Status</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Cancel Booking</th>
+      </div>
+    </div>
+</div>
+<div align="center ">
+<h1 class="text-xl mb-0" style="font-weight: bold; color: blue;">Hall Details:</h1> <br>
+
+<p class="text-xl mb-0">Capacity: {{$hall->capacity}}</p> <br>
+
+<p class="text-xl mb-0">Location: {{$hall->location}}</p> <br>
+  
+<p class="text-xl mb-0">Description: {{$hall->description}}</p> <br>
+
+</div> <br><br>
+
+<table align="center">
+
+  <tr style="background-color:grey;" align="center">
+      <th style="padding:10px; font-size: 20px; color:white;">Date</th>
+      <th style="padding:10px; font-size: 20px; color:white;">Start Time</th>
+      <th style="padding:10px; font-size: 20px; color:white;">End Time</th>
+      <th style="padding:10px; font-size: 20px; color:white;">Reason</th>
+     
+     
+     
     </tr>
+    @if(count($bookings) > 0)
+    @foreach($bookings as $booking)
 
-    @foreach($book as $books)
+   
+      <tr>
+        <td style="padding:10px; font-size: 20px;">{{$booking->date}}</td>
+        <td style="padding:10px; font-size: 20px;">{{$booking->start_time}}</td>
+        <td style="padding:10px; font-size: 20px;">{{$booking->end_time}}</td>
+        <td style="padding:10px; font-size: 20px;">{{$booking->reason}}</td>
+       
+      </tr>
+      @endforeach
+    @else
 
-    <tr style="background-color: grey;  border: 1px solid black;">
-
-        <td style="padding:10px;  color:white;">{{$books->hall->name}}</td>
-        <td style="padding:10px;  color:white;">{{$books->date}}</td>
-        <td style="padding:10px;  color:white;">{{$books->start_time}}</td>
-        <td style="padding:10px;  color:white;">{{$books->end_time}}</td>
-        <td style="padding:10px;  color:white;">{{$books->reason}}</td>
-        <td style="padding:10px;  color:white;">{{$books->status}}</td>
-
-      @if($books->status == 'Booked')
-        <td><a class="btn btn-danger" onclick="return confirm('Are you sure to delete this?')"
-        href="{{url('cancel_book', $books->id)}}">Cancel</a></td>
+    <tr>
+      <td colspan="5" style="text-align:center;">Available for Booking</td>
     </tr>
-
-    @endif
-
-    @endforeach
-
-  </table>
-  </div>
+     @endif
+</table>
 
 
+
+   <!-- .banner-home -->   
 
 <script src="../assets/js/jquery-3.5.1.min.js"></script>
 

@@ -30,30 +30,21 @@
    
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">Hall</span>-Booking</a>
+        <a class="navbar-brand"><span class="text-primary">Hall</span>-Booking</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class=" " id="navbarSupport">
+        <div class="head" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="doctors.html">Halls</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            <li class="nav-item">
+           
 
             <li class="nav-item">
-              <a class="nav-link" style="background-color: greenyellow; color: black; "href="{{url('mybooking')}}">My Booking</a>
+              <a class="nav-link" href="{{url('mybooking')}}">My Booking</a>
             </li>
             <x-app-layout>
     
@@ -87,15 +78,32 @@
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/college.jpg);">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <span class="subhead">Let's make a booking easier</span>
+        <span class="subhead">Let's make booking easier</span>
         <h1 class="display-4">Hall Booking</h1>
         
       </div>
     </div>
   </div>
 
-
- <!-- .page-section -->
+  <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+            <div class="circle-shape bg-accent text-white">
+              <span>J</span>
+            </div>
+            <div class="circle-shape bg-primary text-white">
+              <span>N</span>
+          </div>
+            <div class="circle-shape bg-secondary text-white">
+              <span>E</span>
+            </div>
+            <div class="circle-shape bg-accent text-white">
+              <span>C</span>
+            </div>
+        </div>
+      </div>
+    </div> <!-- .page-section -->
 
     <div class="page-section pb-0">
       <div class="container">
@@ -115,25 +123,32 @@
   </div> <!-- .bg-light -->
 @include('user.hall')
  <!-- .page-section -->
-
+ 
 @include('user.booking')
+
+
 
    <!-- .banner-home -->   
 
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row px-md-3">
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>Jigme Namgyel Engineering College, Dewathang</h5>
-        </div>
+   <footer class="page-footer">
+  <div class="container">
+    <div class="row px-md-3">
+      <div class="col-sm-6 col-lg-3 py-3">
+        <a class="nav-link" href="{{url('aboutus')}}">About Us</a>
+      </div>
+      
+      <div class="col-sm-6 col-lg-3 py-3">
+        <h5>Jigme Namgyel Engineering College, Dewathang</h5>
+        <h5>IT Building</h5>
+      </div>
 
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>IT Building</h5>
-          <h5>+975-17753587
-        </div>
+      <div class="col-sm-6 col-lg-3 py-3">
+        <h5>+975-17753587</h5>
+        <h5>+975-17309535</h5>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
 <script src="../assets/js/jquery-3.5.1.min.js"></script>
 

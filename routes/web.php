@@ -21,7 +21,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/',[HomeController::class,'index']);
 
-Route::get('/home',[HomeController::class,'redirect']);
+Route::get('/home',[HomeController::class,'redirect'])->middleware('auth', 'verified');
 
 Route::get('/add_hall_view',[AdminController::class,'addview']);
 
@@ -41,14 +41,21 @@ Route::get('/updatehall/{id}',[AdminController::class,'updatehall']);
 
 Route::post('/edithall/{id}',[AdminController::class,'edithall']);
 
+Route::get('/hall_details/{id}',[HomeController::class,'hall_details']);
 
+Route::get('/aboutus',[HomeController::class,'aboutus']);
+
+Route::get('/bookingshow',[AdminController::class,'bookingshow']);
+
+Route::get('/body',[AdminController::class,'body']);
+               
 Route::middleware([
     'auth:sanctum',
-    config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect('/home');
+
     })->name('dashboard');
 });
 

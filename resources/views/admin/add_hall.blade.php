@@ -50,10 +50,24 @@
         </div>
 
         <div style="padding:15px;">
+            <label>Capacity</label>
+            <input type="text" style="color:black;" name="capacity" placeholder="Write hall name" required="">
+        </div>
 
-            <label>Hall Image</label>
-            <input type="file" name="file" required="">
+        <div style="padding:15px;">
+            <label>Location</label>
+            <input type="text" style="color:black;" name="location" placeholder="Write hall name" required="">
+        </div>
 
+        <div style="padding:15px;">
+            <label>Description</label>
+            <input type="text" style="color:black;" name="description" placeholder="Write hall name" required="">
+        </div>
+
+        <div style="padding:15px;">
+
+            <label>Hall Image </label>
+            <input type="file" name="file" multiple required="">
         </div>
                 
         <div style="padding:15px;">
