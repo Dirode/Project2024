@@ -40,6 +40,10 @@
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
           
+<<<<<<< HEAD
+=======
+          
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
 
             @if(Route::has('login'))
 

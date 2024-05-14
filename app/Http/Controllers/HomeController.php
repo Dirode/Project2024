@@ -58,6 +58,9 @@ class HomeController extends Controller
     {
          // Retrieve start and end time from the request
    // Retrieve start and end time from the request
+
+
+
 $startTime = $request->start_time;
 $endTime = $request->end_time;
 $hallId = $request->hall;
@@ -66,13 +69,19 @@ $date = $request->date;
   $request->validate([
         'hall_id' => 'required|exists:halls,id',
   ]);
+
+
  
 // Convert start and end time to 12-hour format with AM and PM
 $startTime12 = date('h:i A', strtotime($startTime));
 $endTime12 = date('h:i A', strtotime($endTime));
 
 // Check for overlapping bookings
+
 $overlappingBookings = Booking::where('hall_id', $hallId)
+
+$overlappingBookings = Booking::where('hall', $hallId)
+
         ->whereDate('date', $date)
         ->where(function ($query) use ($startTime12, $endTime12) {
             $query->whereBetween('start_time', [$startTime12, $endTime12])
@@ -120,7 +129,12 @@ $status = 'Booked';
 
        $data->save();
 
+
        $booking = Booking::latest('id')->first(); //get the latest booking
+
+       // Pass the $booking object to the BookingRequestSuccessfulMail constructor
+       $booking = Booking::latest('id')->first(); // Get the latest booking
+
 
        // Redirect back with appropriate message
     if ($status === 'Booked')
@@ -143,7 +157,7 @@ $status = 'Booked';
             {
                 $userid=Auth::user()->id;
 
-             
+
                 $book=booking::where('user_id',$userid)
                                 ->orderBy('date', 'asc')
                                 ->orderBy('start_time', 'asc')
@@ -181,11 +195,16 @@ $status = 'Booked';
     {
         $hall=hall::find($id);
 
+
         $bookings = booking::where('hall_id', $id)->get();
 
         return view('user.hall_details', compact('hall', 'bookings'));
     }   
     
+        $bookings=Booking::find($id);
+
+        return view('user.hall_details', compact('hall', 'bookings'));
+    }
 
 
 }

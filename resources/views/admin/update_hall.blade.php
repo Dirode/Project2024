@@ -56,17 +56,29 @@
 
             <div style="padding:15px;">
             <label>Capacity</label>
+<<<<<<< HEAD
             <input type="text" style="color:black;" name="capacity" placeholder="Write hall name" >
+=======
+            <input type="text" style="color:black;" name="capacity" placeholder="Write hall name">
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
         </div>
 
         <div style="padding:15px;">
             <label>Location</label>
+<<<<<<< HEAD
             <input type="text" style="color:black;" name="location" placeholder="Write hall name" >
+=======
+            <input type="text" style="color:black;" name="location" placeholder="Write hall name">
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
         </div>
 
         <div style="padding:15px;">
             <label>Description</label>
+<<<<<<< HEAD
             <input type="text" style="color:black;" name="description" placeholder="Write hall name" >
+=======
+            <input type="text" style="color:black;" name="description" placeholder="Write hall name">
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
         </div>
 
             <div style="padding:15px;">

@@ -42,6 +42,13 @@ Route::get('/updatehall/{id}',[AdminController::class,'updatehall']);
 Route::post('/edithall/{id}',[AdminController::class,'edithall']);
 
 Route::get('/hall_details/{id}',[HomeController::class,'hall_details']);
+<<<<<<< HEAD
+=======
+
+Route::get('/aboutus',[HomeController::class,'aboutus']);
+
+Route::get('/bookingshow',[AdminController::class,'bookingshow']);
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
 
 Route::get('/aboutus',[HomeController::class,'aboutus']);
 

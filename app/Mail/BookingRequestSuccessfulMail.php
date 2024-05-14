@@ -3,11 +3,15 @@
 namespace App\Mail;
 
 use App\Models\User;
+<<<<<<< HEAD
 
 use App\Models\Booking;
 
 use App\Models\Hall;
 
+=======
+use App\Models\Booking;
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -21,18 +25,23 @@ class BookingRequestSuccessfulMail extends Mailable
 
     public $user;
 
+<<<<<<< HEAD
     public $userName;
 
     public $booking;
 
     public $hallName;
 
+=======
+    public $booking;
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
     /**
      * Create a new message instance.
      */
     public function __construct(User $user, Booking $booking)
     {
         $this->user=$user;
+<<<<<<< HEAD
   
         $this->booking=$booking;
 
@@ -43,8 +52,9 @@ class BookingRequestSuccessfulMail extends Mailable
           $this->userName = User::findOrFail($booking->user_id)->name;
         
         
-  
-    }
+
+        $this->booking=$booking;
+
 
     /**
      * Get the message envelope.
@@ -66,8 +76,11 @@ class BookingRequestSuccessfulMail extends Mailable
             with: [
                 'user'=> $this->user,
                 'booking'=> $this->booking,
+<<<<<<< HEAD
                 'hallName' => $this->hallName, // Pass the hall name to the markdown template
                 
+=======
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
             ]
         );
     }

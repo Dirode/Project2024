@@ -53,6 +53,21 @@
             <label>Capacity</label>
             <input type="text" style="color:black;" name="capacity" placeholder="Write hall name" required="">
         </div>
+<<<<<<< HEAD
+=======
+
+        <div style="padding:15px;">
+            <label>Location</label>
+            <input type="text" style="color:black;" name="location" placeholder="Write hall name" required="">
+        </div>
+
+        <div style="padding:15px;">
+            <label>Description</label>
+            <input type="text" style="color:black;" name="description" placeholder="Write hall name" required="">
+        </div>
+
+        <div style="padding:15px;">
+>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
 
         <div style="padding:15px;">
             <label>Location</label>

@@ -86,8 +86,10 @@
         <td style="padding:10px;  color:white;">{{$books->status}}</td>
 
       @if($books->status == 'Booked')
-        <td><a class="btn btn-danger" onclick="return confirm('Are you sure to delete this?')"
-        href="{{url('cancel_book', $books->id)}}">Cancel</a></td>
+        <td>
+          <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this?')"
+          href="{{url('cancel_book', $books->id)}}">Cancel</a>
+        </td>
     </tr>
 
     @endif

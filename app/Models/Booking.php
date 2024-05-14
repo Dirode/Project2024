@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+
 class Booking extends Model
 {
     use HasFactory;
@@ -30,5 +31,7 @@ class Booking extends Model
         return $this->belongsTo(Hall::class, 'hall_id');
     }
     
+    use Notifiable;
+
 }
 
