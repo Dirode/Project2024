@@ -107,45 +107,51 @@
 
     <div class="page-section pb-0">
       <div class="container">
+
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>Welcome to Hall Booking</h1>
-            <p class="text-grey mb-4"> Implementing an online booking platform allows us to check hall availability, select their desired date and time, and make reservations conveniently from anywhere. </p>
-          </div>
+          <h1>Having Trouble Booking a Hall?</h1> <br>
+            <p class="text-grey mb-4">Here is the Booking Bliss You Have Been Waiting For. 
+              Simply check the hall availability, tailor your date and time, and secure your reservation with ease! </p>
+         </div>
+
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
             <div class="img-place custom-img-1">
               <img src="../assets/img/JNEC_1.jpeg" alt="jnec">
             </div>
           </div>
+         
+          @include('user.hall')
+
+          @include('user.booking')
+
+    
         </div>
-      </div>
-    </div> <!-- .bg-light -->
+      </div>  
+    </div> <!-- .bg-light --><br><br>
   </div> <!-- .bg-light -->
-@include('user.hall')
+
  <!-- .page-section -->
  
-@include('user.booking')
-
-
-
    <!-- .banner-home -->   
 
-   <footer class="page-footer">
+  <footer class="page-footer">
   <div class="container">
     <div class="row px-md-3">
-      <div class="col-sm-6 col-lg-3 py-3">
-        <a class="nav-link" href="{{url('aboutus')}}">About Us</a>
-      </div>
       
       <div class="col-sm-6 col-lg-3 py-3">
+        <a align="center" class="nav-link" href="{{url('aboutus')}}">About Us</a> 
+      </div>
+      
+      <div align="center" class="col-sm-6 col-lg-3 py-3">
         <h5>Jigme Namgyel Engineering College, Dewathang</h5>
-        <h5>IT Building</h5>
       </div>
 
-      <div class="col-sm-6 col-lg-3 py-3">
+      <div align="center" class="col-sm-6 col-lg-3 py-3">
         <h5>+975-17753587</h5>
         <h5>+975-17309535</h5>
       </div>
+
     </div>
   </div>
 </footer>

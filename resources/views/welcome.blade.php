@@ -39,11 +39,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-          
-<<<<<<< HEAD
-=======
-          
->>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
 
             @if(Route::has('login'))
 
@@ -110,17 +105,18 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>Welcome to Hall Booking</h1>
-            <p class="text-grey mb-4"> Implementing an online booking platform allows us to check hall availability, select their desired date and time, and make reservations conveniently from anywhere. </p>
+            <h1>Having Trouble Booking a Hall?</h1>
+            <p class="text-grey mb-4">Here is the Booking Bliss You Have Been Waiting For. 
+              Simply check the hall availability, tailor your date and time, and secure your reservation with ease! </p>
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
             <div class="img-place custom-img-1">
-              <img src="../assets/img/JNEC_1.jpeg" alt="jnec">
+              <img src="../assets/img/JNEC_1.jpeg" alt="jnec"> 
             </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .bg-light -->
+          </div> 
+        </div>  
+      </div> 
+    </div> <br> <br> <!-- .bg-light -->
   </div> <!-- .bg-light -->
 
  <!-- .page-section -->
@@ -132,12 +128,15 @@
   <footer class="page-footer">
     <div class="container">
       <div class="row px-md-3">
-        <div class="col-sm-6 col-lg-3 py-3">
+        <div align="center" class="col-sm-6 col-lg-3 py-3">
           <h5>Jigme Namgyel Engineering College, Dewathang</h5>
         </div>
 
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>+975-17753587
+        <div align="center" class="col-sm-6 col-lg-3 py-3">
+        <i class="fa-solid fa-phone-flip"></i>
+        <h5>+975-17753587</h5>
+        
+          
         </div>
       </div>
     </div>

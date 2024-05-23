@@ -2,22 +2,35 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-@include('admin.css')
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  
+@include('admin.css')
+<style>
+body{ 
+  background-color:#fff;
+}
+</style>
+
+  </head> 
   <body>
     <div class="container-scroller">
 
-      <!-- partial:partials/_sidebar.html -->
+     
 @include('admin.sidebar')
         <!-- partial -->
 @include('admin.navbar')
         <!-- partial -->
-@include('admin.body')
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+       
+    
+    </div>
+    
     
     @include('admin.script')
-    <!-- End custom js for this page -->
+
   </body>
 </html>

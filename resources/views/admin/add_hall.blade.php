@@ -2,6 +2,13 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
     <style type="text/css">
 
@@ -17,7 +24,7 @@
 
   </head>
   <body>
-    <div class="container-scroller">
+    <div class="container-scroller" style="background-color:white">
 
       <!-- partial:partials/_sidebar.html -->
 @include('admin.sidebar')
@@ -44,52 +51,37 @@
                 
         @csrf
 
-        <div style="padding:15px;">
+        <div style="padding:15px; color:black">
             <label>Hall Name</label>
-            <input type="text" style="color:black;" name="name" placeholder="Write hall name" required="">
+            <input type="text" style="color:black;" name="name" placeholder="Hall name" required="">
         </div>
 
-        <div style="padding:15px;">
+        <div style="padding:15px; color:black">
             <label>Capacity</label>
-            <input type="text" style="color:black;" name="capacity" placeholder="Write hall name" required="">
+            <input type="text" style="color:black;" name="capacity" placeholder="Capacity of hall" required="">
         </div>
-<<<<<<< HEAD
-=======
 
-        <div style="padding:15px;">
+        <div style="padding:15px; color:black">
             <label>Location</label>
-            <input type="text" style="color:black;" name="location" placeholder="Write hall name" required="">
+            <input type="text" style="color:black;" name="location" placeholder="Location of hall" required="">
         </div>
 
-        <div style="padding:15px;">
+        <div style="padding:15px; color:black">
             <label>Description</label>
-            <input type="text" style="color:black;" name="description" placeholder="Write hall name" required="">
+            <input type="text" style="color:black;" name="description" placeholder="Hall description" required="">
         </div>
 
-        <div style="padding:15px;">
->>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
-
-        <div style="padding:15px;">
-            <label>Location</label>
-            <input type="text" style="color:black;" name="location" placeholder="Write hall name" required="">
-        </div>
-
-        <div style="padding:15px;">
-            <label>Description</label>
-            <input type="text" style="color:black;" name="description" placeholder="Write hall name" required="">
-        </div>
-
-        <div style="padding:15px;">
+        <div style="padding:15px; color:black">
 
             <label>Hall Image </label>
             <input type="file" name="file" multiple required="">
         </div>
-                
-        <div style="padding:15px;">
 
-            <input type="submit" class="btn btn-success">
-        </div>
-
+        <button type="submit" style="background-color:#00D9A5; border-color:#00D9A5;"
+            class="btn btn-primary mt-3 wow zoomIn" onmouseover="this.style.backgroundColor='grey'; this.style.borderColor='grey'"
+            onmouseout="this.style.backgroundColor='#00D9A5'; this.style.borderColor='#00D9A5'">
+            Submit
+        </button>
 
         </form>
 

@@ -1,18 +1,12 @@
-<div class="page-section">
+<div class="page-section" style="box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);">
     <div class="container">
-      <h1 class="text-center wow fadeInUp">Booking Details</h1>
+      <h1 class="text-center wow fadeInUp" style="font-size: 1.8rem;">Booking Details</h1>
 
       <form class="main-form" action="{{url('booking')}}" method="POST">
 
       @csrf
 
         <div class="row mt-5 ">
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" name="name" class="form-control" placeholder="Full name">
-          </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" name="email" class="form-control" placeholder="Email address..">
-          </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
             <input type="date" id="date" name="date" class="form-control" min="{{ now()->format('Y-m-d') }}" required="">
           </div>
@@ -55,8 +49,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit</button>
-
-        <button type="cancel" class="btn btn-primary mt-3 wow zoomIn">Cancel</button>
     </form>
     </div>
   </div> <!-- .page-section -->

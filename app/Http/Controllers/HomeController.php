@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\BookingRequestSuccessfulMail;
 
+
 class HomeController extends Controller
 {
     public function redirect()
@@ -80,8 +81,6 @@ $endTime12 = date('h:i A', strtotime($endTime));
 
 $overlappingBookings = Booking::where('hall_id', $hallId)
 
-$overlappingBookings = Booking::where('hall', $hallId)
-
         ->whereDate('date', $date)
         ->where(function ($query) use ($startTime12, $endTime12) {
             $query->whereBetween('start_time', [$startTime12, $endTime12])
@@ -93,22 +92,20 @@ $overlappingBookings = Booking::where('hall', $hallId)
         })
         ->exists();
 
-// If there are overlapping bookings, deny the request
-if ($overlappingBookings) {
- return redirect()->back()->with('message', 'The hall is already booked for this time slot.');
-} else {
-$status = 'Booked';
-
+    // If there are overlapping bookings, deny the request
+    if ($overlappingBookings) {
+    return redirect()->back()->with('message', 'The hall is already booked for this time slot.');
+    } else {
+    $status = 'Booked';
    
-}
+    }
         $booking = Booking::with('hall')->get();
 
-        
         $data = new booking;
 
-        $data->name=$request->name;
-
-        $data->email=$request->email;
+        $data->name = Auth::user()->name; // Use authenticated user's name
+        
+        $data->email = Auth::user()->email; // Use authenticated user's email
 
         $data->date=$request->date;
 
@@ -132,14 +129,12 @@ $status = 'Booked';
 
        $booking = Booking::latest('id')->first(); //get the latest booking
 
-       // Pass the $booking object to the BookingRequestSuccessfulMail constructor
-       $booking = Booking::latest('id')->first(); // Get the latest booking
-
 
        // Redirect back with appropriate message
     if ($status === 'Booked')
     {
-        $user=User::find($data->user_id);
+        $user=Auth::user();
+
         // Send email to user
         Mail::to($data->email)->send(new BookingRequestSuccessfulMail($user, $booking));
 
@@ -147,7 +142,6 @@ $status = 'Booked';
     } 
       
 } 
-
     public function mybooking()
     {
         if(Auth::id())
@@ -156,7 +150,6 @@ $status = 'Booked';
 
             {
                 $userid=Auth::user()->id;
-
 
                 $book=booking::where('user_id',$userid)
                                 ->orderBy('date', 'asc')
@@ -195,16 +188,16 @@ $status = 'Booked';
     {
         $hall=hall::find($id);
 
-
         $bookings = booking::where('hall_id', $id)->get();
 
         return view('user.hall_details', compact('hall', 'bookings'));
     }   
     
+    public function hall_bookings($id)
+    {
         $bookings=Booking::find($id);
 
         return view('user.hall_details', compact('hall', 'bookings'));
     }
-
 
 }

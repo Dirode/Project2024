@@ -2,6 +2,13 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  
     <base href="/public">
 
     <style type="text/css">
@@ -18,7 +25,7 @@
 
   </head>
   <body>
-    <div class="container-scroller">
+    <div class="container-scroller" style="background-color:white;">
 
       <!-- partial:partials/_sidebar.html -->
 @include('admin.sidebar')
@@ -35,7 +42,7 @@
     <div class="alert alert-success">
 
     <button type="button" class="close" data-dismiss="alert">
-        x
+        
     </button>
 
     {{session()->get('message')}}
@@ -45,7 +52,7 @@
     @endif
 
         <form action="{{url('edithall', $data->id)}}" method="POST" enctype="multipart/form-data">
-            <div style="padding:15px;">
+            <div style="padding:15px; color:black;">
 
             @csrf
 
@@ -54,52 +61,39 @@
 
             </div>
 
-            <div style="padding:15px;">
-            <label>Capacity</label>
-<<<<<<< HEAD
-            <input type="text" style="color:black;" name="capacity" placeholder="Write hall name" >
-=======
-            <input type="text" style="color:black;" name="capacity" placeholder="Write hall name">
->>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
-        </div>
+            <div style="padding:15px; color:black;">
+                <label>Capacity</label>
+                <input type="text" style="color:black;" name="capacity" placeholder="Hall name" >
+            </div>
 
-        <div style="padding:15px;">
-            <label>Location</label>
-<<<<<<< HEAD
-            <input type="text" style="color:black;" name="location" placeholder="Write hall name" >
-=======
-            <input type="text" style="color:black;" name="location" placeholder="Write hall name">
->>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
-        </div>
+            <div style="padding:15px; color:black;">
+                <label>Location</label>
+                <input type="text" style="color:black;" name="location" placeholder="Location of Hall" >
+            </div>
 
-        <div style="padding:15px;">
+        <div style="padding:15px; color:black;">
             <label>Description</label>
-<<<<<<< HEAD
-            <input type="text" style="color:black;" name="description" placeholder="Write hall name" >
-=======
-            <input type="text" style="color:black;" name="description" placeholder="Write hall name">
->>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
+            <input type="text" style="color:black;" name="description" placeholder="Hall description" required="" >
         </div>
 
-            <div style="padding:15px;">
+            <div style="padding:15px; color:black;">
 
                 <label>Old Image</label>
-                <img height="150" width="150" src="hallimage/{{$data->image}}"> <br> <br> 
-                
+                <img height="300" width="300" src="hallimage/{{$data->image}}"> <br>  
 
             </div>
 
-            <div style="padding:15px;">
+            <div style="padding:15px; color:black;">
 
                 <label>Change Image </label>
                 <input type="file" name="file"> <br> <br>
 
             </div>
-
-            <div style="padding:15px;">
-
-                <input type="submit" class=btn btn-primary>
-            </div>
+            <button type="submit" style="background-color:#00D9A5; border-color:#00D9A5;"
+                class="btn btn-primary mt-3 wow zoomIn" onmouseover="this.style.backgroundColor='grey'; this.style.borderColor='grey'"
+                onmouseout="this.style.backgroundColor='#00D9A5'; this.style.borderColor='#00D9A5'">
+                Submit
+            </button>
 
         </form>
 

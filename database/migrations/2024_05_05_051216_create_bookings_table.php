@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
-<<<<<<<< HEAD:database/migrations/2024_05_14_052739_create_bookings_table.php
             $table->unsignedBigInteger('hall_id');
             $table->foreign('hall_id')->references('id')->on('halls'); 
-========
->>>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e:database/migrations/2024_05_05_051216_create_bookings_table.php
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('date')->nullable();

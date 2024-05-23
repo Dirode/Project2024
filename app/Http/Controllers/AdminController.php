@@ -10,11 +10,6 @@ use App\Models\Hall;
 
 use App\Models\Booking;
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> bbcafb2d0b96512e7f096eb72ccd2579f5c4cf1e
 class AdminController extends Controller
 {
    public function addview()
@@ -145,5 +140,11 @@ class AdminController extends Controller
       return view('admin.bookingshow', compact('data'));
    }
 
-  
+   public function home()
+   {
+      $data=booking::all();
+      
+      return view('admin.home', compact('data'));
+   }
+   
 }

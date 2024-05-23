@@ -20,6 +20,11 @@
 
   <link rel="stylesheet" href="../assets/css/theme.css">
 
+  <style>
+    table {
+  width: 100%; /* set the table width to 100% of its parent container */
+  }
+  </style>
 </head>
 <body>
 
@@ -38,13 +43,13 @@
 
         <div class=" " id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
 
 
             <li class="nav-item">
-              <a class="nav-link" style="color: black; "href="{{url('mybooking')}}">My Booking</a>
+              <a class="nav-link" style="color:#00D9A5; "href="{{url('mybooking')}}">My Booking</a>
             </li>
             <x-app-layout>
     
@@ -58,35 +63,41 @@
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
     </nav>
+
+    <style>
+      table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          color: black;
+      }
+    </style>
   </header>
 
-  <div align="center" style="padding-top:70px;">
+  <div align="center">
 
-  <table>
+  <table class="my-table" style='table-layout:fixed'>
 
-    <tr style="background-color:black;" align="center">
-        <th style="padding:10px; font-size: 20px; color:white;">Hall Name</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Date</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Start_Time</th>
-        <th style="padding:10px; font-size: 20px; color:white;">End_Time</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Reason</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Status</th>
-        <th style="padding:10px; font-size: 20px; color:white;">Cancel Booking</th>
-    </tr>
+    <tr align="center" style="background-color:aquamarine;">
+    <th style="padding:10px; font-size: 20px; width: 200px;">Hall Name</th>
+    <th style="padding:10px; font-size: 20px; width: 150px;">Date</th>
+    <th style="padding:10px; font-size: 20px; width: 150px;">Start Time</th>
+    <th style="padding:10px; font-size: 20px; width: 150px;">End Time</th>
+    <th style="padding:10px; font-size: 20px; width: 200px;">Reason</th>
+    <th style="padding:10px; font-size: 20px; width: 150px;">Cancel Booking</th>
+  </tr>
 
     @foreach($book as $books)
 
-    <tr style="background-color: grey;  border: 1px solid black;">
+    <tr style="border: 1px solid black;">
 
-        <td style="padding:10px;  color:white;">{{$books->hall->name}}</td>
-        <td style="padding:10px;  color:white;">{{$books->date}}</td>
-        <td style="padding:10px;  color:white;">{{$books->start_time}}</td>
-        <td style="padding:10px;  color:white;">{{$books->end_time}}</td>
-        <td style="padding:10px;  color:white;">{{$books->reason}}</td>
-        <td style="padding:10px;  color:white;">{{$books->status}}</td>
+        <td style="padding:10px;">{{$books->hall->name}}</td>
+        <td style="padding:10px;" align="center">{{$books->date}}</td>
+        <td style="padding:10px;" align="center">{{$books->start_time}}</td>
+        <td style="padding:10px;" align="center">{{$books->end_time}}</td>
+        <td style="padding:10px;">{{$books->reason}}</td>
 
       @if($books->status == 'Booked')
-        <td>
+        <td align="center">
           <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this?')"
           href="{{url('cancel_book', $books->id)}}">Cancel</a>
         </td>
