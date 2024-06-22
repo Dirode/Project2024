@@ -50,12 +50,12 @@
     </div>
 
     @endif
-
+    <h1 style="padding:15px; color:black; font-size: 25px;"> Update Hall </h1>
         <form action="{{url('edithall', $data->id)}}" method="POST" enctype="multipart/form-data">
             <div style="padding:15px; color:black;">
 
             @csrf
-
+           
                 <label>Hall Name</label>
                 <input type="text" style="color:black;" name="name" value="{{$data->name}}">
 
@@ -63,17 +63,17 @@
 
             <div style="padding:15px; color:black;">
                 <label>Capacity</label>
-                <input type="text" style="color:black;" name="capacity" placeholder="Hall name" >
+                <input type="text" style="color:black;" name="capacity" value="{{$data->capacity}}"  placeholder="Hall Capacity" >
             </div>
 
             <div style="padding:15px; color:black;">
                 <label>Location</label>
-                <input type="text" style="color:black;" name="location" placeholder="Location of Hall" >
+                <input type="text" style="color:black;" name="location" value="{{$data->location}}" placeholder="Location of Hall" >
             </div>
 
         <div style="padding:15px; color:black;">
             <label>Description</label>
-            <input type="text" style="color:black;" name="description" placeholder="Hall description" required="" >
+            <input type="text" style="color:black;" name="description" value="{{$data->description}}" placeholder="Hall description" required="" >
         </div>
 
             <div style="padding:15px; color:black;">

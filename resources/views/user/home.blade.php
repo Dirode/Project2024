@@ -123,8 +123,7 @@
          
           @include('user.hall')
 
-          @include('user.booking')
-
+         
     
         </div>
       </div>  

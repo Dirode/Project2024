@@ -71,7 +71,7 @@ class AdminController extends Controller
       {
          if(Auth::user()->usertype==1)
          {
-            $data = hall::all();
+            $data = Hall::orderBy('created_at', 'desc')->get();
 
             return view('admin.showhall', compact('data'));
          }
@@ -138,13 +138,6 @@ class AdminController extends Controller
       $data=booking::all();
       
       return view('admin.bookingshow', compact('data'));
-   }
-
-   public function home()
-   {
-      $data=booking::all();
-      
-      return view('admin.home', compact('data'));
    }
    
 }

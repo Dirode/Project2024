@@ -50,7 +50,7 @@
     <form action="{{url('upload_hall')}}" method="POST" enctype="multipart/form-data">
                 
         @csrf
-
+        <h1 style="padding:15px; color:black; font-size: 25px;"> Add Hall </h1>
         <div style="padding:15px; color:black">
             <label>Hall Name</label>
             <input type="text" style="color:black;" name="name" placeholder="Hall name" required="">

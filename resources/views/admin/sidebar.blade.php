@@ -21,7 +21,7 @@
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
-              <span class="menu-title">All Booking</span>
+              <span class="menu-title">All Bookings</span>
             </a>
           </li>
 

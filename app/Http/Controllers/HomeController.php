@@ -31,7 +31,9 @@ class HomeController extends Controller
             }
             else
             {
-                return view('admin.home');
+                $data=booking::all();
+
+                return view('admin.bookingshow',compact('data'));
             }
         }
 
@@ -64,7 +66,7 @@ class HomeController extends Controller
 
 $startTime = $request->start_time;
 $endTime = $request->end_time;
-$hallId = $request->hall;
+$hallId = $request->hall_id;
 $date = $request->date;
 
   $request->validate([
@@ -94,7 +96,7 @@ $overlappingBookings = Booking::where('hall_id', $hallId)
 
     // If there are overlapping bookings, deny the request
     if ($overlappingBookings) {
-    return redirect()->back()->with('message', 'The hall is already booked for this time slot.');
+        return redirect()->back()->with('message', 'The hall is already booked for this time slot.')->with('alert-class', 'alert-danger');
     } else {
     $status = 'Booked';
    
@@ -138,7 +140,7 @@ $overlappingBookings = Booking::where('hall_id', $hallId)
         // Send email to user
         Mail::to($data->email)->send(new BookingRequestSuccessfulMail($user, $booking));
 
-        return redirect()->back()->with('message', 'Booking Request Successful.');
+        return redirect()->back()->with('message', 'Booking Request Successful.')->with('alert-class', 'alert-success');
     } 
       
 } 
@@ -195,9 +197,10 @@ $overlappingBookings = Booking::where('hall_id', $hallId)
     
     public function hall_bookings($id)
     {
-        $bookings=Booking::find($id);
-
+        
+        $bookings=Booking::where($id);
+                    
         return view('user.hall_details', compact('hall', 'bookings'));
-    }
+    }    
 
 }

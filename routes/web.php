@@ -46,6 +46,8 @@ Route::get('/aboutus',[HomeController::class,'aboutus']);
 
 Route::get('/bookingshow',[AdminController::class,'bookingshow']);
 
+Route::get('/Adminhome',[AdminController::class,'Adminhome']);
+
 
 Route::middleware([
     'auth:sanctum',

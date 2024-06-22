@@ -41,10 +41,6 @@
             <li class="nav-item">
               <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
-
-            <li class="nav-item">
-              <a class="nav-link" style="color: black; "href="{{url('mybooking')}}">My Booking</a>
-            </li>
             <x-app-layout>
     
             </x-app-layout>
@@ -67,33 +63,22 @@
     </style>
     
   </header>
-
-  <div align="center" class="owl-carousel wow fadeInUp" id="doctorSlideshow">
-
-    <div class="hall-slides">
-      <div>  
-        <img style="height:300px !important;" src="hallimage/{{$hall->image}}" alt="">
-      </div>
-      <div class="body">
-        <p class="text-xl mb-0">{{$hall->name}}</p>
-
-      </div>
+  
+  <div class="hall-container" style="height: 100vh; background-image: url('hallimage/{{$hall->image}}'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center;">
+    <div class="content" style="color: white; text-align: left; font-size: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+        <p class="text-xl">{{$hall->name}}</p>
+        <p class="text-xl">Capacity: {{$hall->capacity}}</p> 
+        <p class="text-xl">Location: {{$hall->location}}</p>
+        <p class="text-xl">Description: {{$hall->description}}</p> 
     </div>
 </div>
-<div align="center ">
-<h1 class="text-xl mb-0" style="font-weight: bold; color:darkblack;">Hall Details</h1> <br>
+<br><br>
 
-<p class="text-xl mb-0">Capacity: {{$hall->capacity}}</p> <br>
-
-<p class="text-xl mb-0">Location: {{$hall->location}}</p> <br>
-  
-<p class="text-xl mb-0">Description: {{$hall->description}}</p> <br>
-
-</div> <br>
 
 <table align="center" >
 <h1 class="text-xl mb-0" style="font-weight: bold; color: darkblack;" align="center">Booking Schedules</h1> <br>
   <tr align="center" style="background-color:aquamarine;">
+      <th style="padding:10px; font-size: 20px;">Name</th>
       <th style="padding:10px; font-size: 20px;">Date</th>
       <th style="padding:10px; font-size: 20px;">Start Time</th>
       <th style="padding:10px; font-size: 20px;">End Time</th>
@@ -105,6 +90,7 @@
     @foreach($bookings as $booking)
 
       <tr style="border: 1px solid black;">
+      <td style="padding:10px; font-size: 20px;">{{$booking->name}}</td>
         <td style="padding:10px; font-size: 20px;">{{$booking->date}}</td>
         <td style="padding:10px; font-size: 20px;">{{$booking->start_time}}</td>
         <td style="padding:10px; font-size: 20px;">{{$booking->end_time}}</td>
@@ -120,8 +106,18 @@
     </tr>
      @endif
 </table> <br> <br> <br>
+@if (session('message'))
+    <div class="alert {{ session('alert-class', 'alert-info') }}" style="text-align: center;">
+      <button type="button" class="close" data-dismiss="alert">
+        x
+      </button>
+        {{ session('message') }}
+    </div>
+@endif
 
+ 
 
+@include('user.booking')
 
    <!-- .banner-home -->   
 

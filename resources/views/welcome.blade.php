@@ -125,22 +125,6 @@
 
    <!-- .banner-home -->   
 
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row px-md-3">
-        <div align="center" class="col-sm-6 col-lg-3 py-3">
-          <h5>Jigme Namgyel Engineering College, Dewathang</h5>
-        </div>
-
-        <div align="center" class="col-sm-6 col-lg-3 py-3">
-        <i class="fa-solid fa-phone-flip"></i>
-        <h5>+975-17753587</h5>
-        
-          
-        </div>
-      </div>
-    </div>
-  </footer>
 
 <script src="../assets/js/jquery-3.5.1.min.js"></script>
 
